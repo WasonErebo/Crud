@@ -7,13 +7,13 @@ class Usuario_model extends CI_Model{
         $this->load->database();
     }
     public function list_all(){
-        $query=$this->db->query("select * from Usuario");
+        $query=$this->db->query("select Usuario.usuario_id,Usuario.nombre,Usuario.apepat,Ciudad.nombre as nomciudad from Usuario,Ciudad where Usuario.ciudad_id=Ciudad.ciudad_id");
         $result=$query->result_object();
         $this->db->close();
         return $result;
     }
-    public function save($nombre,$apepat){
-        $this->db->query("insert into Usuario(nombre,apepat) values('".$nombre."','".$apepat."')");
+    public function save($nombre,$apepat,$ciudad_id){
+        $this->db->query("insert into Usuario(nombre,apepat,ciudad_id) values('".$nombre."','".$apepat."','".$ciudad_id."')");
         $this->db->close();
     }
     public function eliminar($usuario_id){

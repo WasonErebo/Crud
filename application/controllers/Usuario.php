@@ -5,6 +5,7 @@ class Usuario extends CI_Controller{
         parent::__construct();
         //llamando al modelo
         $this->load->model('Usuario_model');
+        $this->load->model('Ciudad_model');
         //Es el que maneja la ruta de todas las paginas. Se usa siempre.
         $this->load->helper('url');
     }
@@ -12,14 +13,16 @@ class Usuario extends CI_Controller{
         $data["Usuario"]=$this->Usuario_model->list_all();
         //llamar vista index
         $this->load->view('Usuario_index',$data);
-    }
+    }    
     public function nuevo(){
-       $this->load->view('Usuario_nuevo');
+       $data["Ciudad"]=$this->Ciudad_model->list_all();
+       $this->load->view('Usuario_nuevo',$data);
     }
     public function save(){
         $nombre=$this->input->post('nombre');
         $apepat=$this->input->post('apepat');
-        $this->Usuario_model->save($nombre,$apepat);
+        $ciudad_id=$this->input->post('ciudad_id');
+        $this->Usuario_model->save($nombre,$apepat,$ciudad_id);
         redirect('Usuario');
     }
     public function eliminar($usuario_id){
