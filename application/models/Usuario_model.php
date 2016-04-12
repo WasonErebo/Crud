@@ -20,6 +20,10 @@ class Usuario_model extends CI_Model{
         $this->db->query("delete from Usuario where usuario_id='".$usuario_id."'");
         $this->db->close();
     }
+    public function editar($usuario_id,$nombre,$apepat,$ciudad_id){
+        $this->db->query("update Usuario set nombre='".$nombre."',apepat='".$apepat."',ciudad_id='".$ciudad_id."'where usuario_id='".$usuario_id."'");
+        $this->db->close();
+    }
     public function ver_detalle($usuario_id){
         $query=$this->db->query("select * from Usuario where usuario_id='".$usuario_id."'");
         $result=$query->result_object();

@@ -25,6 +25,16 @@ class Ciudad extends CI_Controller{
         $this->Ciudad_model->eliminar($ciudad_id);
         redirect('Ciudad');
     }
+    public function editar($ciudad_id){
+        $data["Ciudad"]=$this->Ciudad_model->ver_detalle($ciudad_id);
+        $this->load->view('Ciudad_editar',$data);
+    }
+    public function actualizar(){
+        $id=$this->input->post('ciudad_id');
+        $nom=$this->input->post('nombre');
+        $this->Ciudad_model->editar($id,$nom);
+        redirect('Ciudad');
+    }
     public function ver_detalle($ciudad_id){
         $data["Ciudad"]=$this->Ciudad_model->ver_detalle($ciudad_id);
         $this->load->view('Ciudad_detalle',$data);

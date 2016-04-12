@@ -4,13 +4,20 @@
 
 <table border="1">
     <thead>
+    <th>Id</th>
+    </thead>
+    <thead>
     <th>Nombre</th>
+    </thead>
+    <thead>
+    <th>Acciones</th>
     </thead>
     <tbody>
         <?php foreach($Ciudad as $data){ ?>            
         <tr>
             <td><?php echo $data->nombre; ?></td>
             <td><a href="<?php echo 'eliminar/'.$data->ciudad_id; ?>">Eliminar</a></td>
+            <td><a href="<?php echo 'editar/'.$data->ciudad_id; ?>">Editar</a></td>
             <td><a href="<?php echo 'ver_detalle/'.$data->ciudad_id; ?>">Ver detalle</a></td>
         </tr>
         <?php } ?>

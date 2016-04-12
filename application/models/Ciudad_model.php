@@ -19,6 +19,10 @@ class Ciudad_model extends CI_Model{
         $this->db->query("delete from Ciudad where ciudad_id='".$ciudad_id."'");
         $this->db->close();
     }
+    public function editar($ciudad_id, $nombre){
+        $this->db->query("update Ciudad set nombre='".$nombre."'where ciudad_id='".$ciudad_id."'");
+        $this->db->close();
+    }
     public function ver_detalle($ciudad_id){
         $query=$this->db->query("select * from Ciudad where ciudad_id='".$ciudad_id."'");
         $result=$query->result_object();
