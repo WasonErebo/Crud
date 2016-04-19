@@ -8,6 +8,12 @@ class Usuario extends CI_Controller{
         $this->load->model('Ciudad_model');
         //Es el que maneja la ruta de todas las paginas. Se usa siempre.
         $this->load->helper('url');
+        $this->load->library('session');
+        if($this->session->userdata('login')){
+            
+        }else{
+            redirect(base_url()."index.php/login");
+        }
     }
     public function index(){
         $data["Usuario"]=$this->Usuario_model->list_all();

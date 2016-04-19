@@ -1,4 +1,5 @@
-
+<a href="<?php echo (base_url() . 'index.php/login/log_out') ?>">Cerrar Sesion</a>
+<br>
 <a href="Index">Volver</a>
 
 <form method="post" action="save">
