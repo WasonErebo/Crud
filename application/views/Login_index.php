@@ -29,7 +29,7 @@
 
 
 
-
+<!--
 <h1>Ingresar a sistema</h1>
 <br>
 <a href="<?php echo (base_url() . 'index.php/login/log_out') ?>">Cerrar Sesion</a>
@@ -48,3 +48,4 @@
     </tr>
 </table>
 </form>
+-->

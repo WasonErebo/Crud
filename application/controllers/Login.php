@@ -8,18 +8,23 @@ class Login extends CI_Controller{
         $this->load->model('Login_model');
     }
         public function index(){
-           $this->load->view('template/Head_index');
+           $this->load->view('templates/Head_index');
            $this->load->view('Login_index');
-           $this->load->view('template/Footer_index');
+           $this->load->view('templates/Footer_index');
         }
         public function log_in(){
             $username=$this->input->post('username');
             $password=$this->input->post('password');
             $valido=$this->Login_model->validar($username,$password);
-            if($valido){
-                $usuario_data=array(
-                    'login' => TRUE
-                );
+            if($valido != false){
+                foreach ($valido as $login){
+                    $usuario_data=array(
+                        'id' => $login->usuario_id,
+                        'password' => $login->username,
+                        'login' => TRUE
+                    );
+                }
+                
                 $this->session->set_userdata($usuario_data);
                 redirect(base_url() . 'index.php/home');
             }else{
