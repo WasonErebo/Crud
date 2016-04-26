@@ -13,7 +13,7 @@ class Home extends CI_Controller{
     }
         public function index(){
             $data['username'] = $this->session->userdata('nombre');
-            $data['idusuario'] = $this->session->userdata('id');
+            $data['usuario_id'] = $this->session->userdata('id');
             $this->load->view('Home_index', $data);
         }
     }
